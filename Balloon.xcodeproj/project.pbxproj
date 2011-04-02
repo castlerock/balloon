@@ -1,0 +1,340 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5301F1391346E78C003C4AF8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5301F1381346E78C003C4AF8 /* Cocoa.framework */; };
+		5301F13B1346E78C003C4AF8 /* MacRuby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5301F13A1346E78C003C4AF8 /* MacRuby.framework */; };
+		5301F1421346E78C003C4AF8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5301F1401346E78C003C4AF8 /* InfoPlist.strings */; };
+		5301F1451346E78C003C4AF8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5301F1441346E78C003C4AF8 /* main.m */; };
+		5301F1491346E78C003C4AF8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5301F1471346E78C003C4AF8 /* MainMenu.xib */; };
+		5301F14C1346E78C003C4AF8 /* rb_main.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5301F14B1346E78C003C4AF8 /* rb_main.rb */; };
+		5301F14E1346E78C003C4AF8 /* AppDelegate.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5301F14D1346E78C003C4AF8 /* AppDelegate.rb */; };
+		5301F1511346E78C003C4AF8 /* Balloon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5301F14F1346E78C003C4AF8 /* Balloon.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5301F1341346E78C003C4AF8 /* Balloon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Balloon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5301F1381346E78C003C4AF8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		5301F13A1346E78C003C4AF8 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = System/Library/Frameworks/MacRuby.framework; sourceTree = SDKROOT; };
+		5301F13F1346E78C003C4AF8 /* Balloon-Info.plist */ = {isa = PBXFileReference; path = "Balloon-Info.plist"; sourceTree = "<group>"; };
+		5301F1411346E78C003C4AF8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5301F1431346E78C003C4AF8 /* Balloon-Prefix.pch */ = {isa = PBXFileReference; path = "Balloon-Prefix.pch"; sourceTree = "<group>"; };
+		5301F1441346E78C003C4AF8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5301F1481346E78C003C4AF8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5301F14B1346E78C003C4AF8 /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
+		5301F14D1346E78C003C4AF8 /* AppDelegate.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = AppDelegate.rb; sourceTree = "<group>"; };
+		5301F1501346E78C003C4AF8 /* Balloon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Balloon.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5301F1311346E78C003C4AF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5301F1391346E78C003C4AF8 /* Cocoa.framework in Frameworks */,
+				5301F13B1346E78C003C4AF8 /* MacRuby.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5301F1291346E78C003C4AF8 = {
+			isa = PBXGroup;
+			children = (
+				5301F13D1346E78C003C4AF8 /* Balloon */,
+				5301F1371346E78C003C4AF8 /* Frameworks */,
+				5301F1351346E78C003C4AF8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5301F1351346E78C003C4AF8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5301F1341346E78C003C4AF8 /* Balloon.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5301F1371346E78C003C4AF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5301F1381346E78C003C4AF8 /* Cocoa.framework */,
+				5301F13A1346E78C003C4AF8 /* MacRuby.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5301F13D1346E78C003C4AF8 /* Balloon */ = {
+			isa = PBXGroup;
+			children = (
+				5301F14D1346E78C003C4AF8 /* AppDelegate.rb */,
+				5301F14F1346E78C003C4AF8 /* Balloon.xcdatamodeld */,
+				5301F1461346E78C003C4AF8 /* Resources */,
+				5301F14A1346E78C003C4AF8 /* Other Sources */,
+				5301F13E1346E78C003C4AF8 /* Supporting Files */,
+			);
+			path = Balloon;
+			sourceTree = "<group>";
+		};
+		5301F13E1346E78C003C4AF8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5301F13F1346E78C003C4AF8 /* Balloon-Info.plist */,
+				5301F1401346E78C003C4AF8 /* InfoPlist.strings */,
+				5301F1431346E78C003C4AF8 /* Balloon-Prefix.pch */,
+				5301F1441346E78C003C4AF8 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5301F1461346E78C003C4AF8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5301F1471346E78C003C4AF8 /* MainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		5301F14A1346E78C003C4AF8 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				5301F14B1346E78C003C4AF8 /* rb_main.rb */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		5301F13C1346E78C003C4AF8 /* Deployment */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "--compile --embed";
+			buildConfigurationList = 5301F1571346E78C003C4AF8 /* Build configuration list for PBXLegacyTarget "Deployment" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/macruby_deploy;
+			dependencies = (
+			);
+			name = Deployment;
+			passBuildSettingsInEnvironment = 1;
+			productName = Deployment;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		5301F1331346E78C003C4AF8 /* Balloon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5301F1541346E78C003C4AF8 /* Build configuration list for PBXNativeTarget "Balloon" */;
+			buildPhases = (
+				5301F1301346E78C003C4AF8 /* Sources */,
+				5301F1311346E78C003C4AF8 /* Frameworks */,
+				5301F1321346E78C003C4AF8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Balloon;
+			productName = Balloon;
+			productReference = 5301F1341346E78C003C4AF8 /* Balloon.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5301F12B1346E78C003C4AF8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "AGiLE ANiMAL INC.";
+			};
+			buildConfigurationList = 5301F12E1346E78C003C4AF8 /* Build configuration list for PBXProject "Balloon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5301F1291346E78C003C4AF8;
+			productRefGroup = 5301F1351346E78C003C4AF8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5301F1331346E78C003C4AF8 /* Balloon */,
+				5301F13C1346E78C003C4AF8 /* Deployment */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5301F1321346E78C003C4AF8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5301F1421346E78C003C4AF8 /* InfoPlist.strings in Resources */,
+				5301F1491346E78C003C4AF8 /* MainMenu.xib in Resources */,
+				5301F14C1346E78C003C4AF8 /* rb_main.rb in Resources */,
+				5301F14E1346E78C003C4AF8 /* AppDelegate.rb in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5301F1301346E78C003C4AF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5301F1451346E78C003C4AF8 /* main.m in Sources */,
+				5301F1511346E78C003C4AF8 /* Balloon.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5301F1401346E78C003C4AF8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5301F1411346E78C003C4AF8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5301F1471346E78C003C4AF8 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5301F1481346E78C003C4AF8 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5301F1521346E78C003C4AF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5301F1531346E78C003C4AF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5301F1551346E78C003C4AF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Balloon/Balloon-Prefix.pch";
+				INFOPLIST_FILE = "Balloon/Balloon-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5301F1561346E78C003C4AF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Balloon/Balloon-Prefix.pch";
+				INFOPLIST_FILE = "Balloon/Balloon-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		5301F1581346E78C003C4AF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		5301F1591346E78C003C4AF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5301F12E1346E78C003C4AF8 /* Build configuration list for PBXProject "Balloon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5301F1521346E78C003C4AF8 /* Debug */,
+				5301F1531346E78C003C4AF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5301F1541346E78C003C4AF8 /* Build configuration list for PBXNativeTarget "Balloon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5301F1551346E78C003C4AF8 /* Debug */,
+				5301F1561346E78C003C4AF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5301F1571346E78C003C4AF8 /* Build configuration list for PBXLegacyTarget "Deployment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5301F1581346E78C003C4AF8 /* Debug */,
+				5301F1591346E78C003C4AF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5301F14F1346E78C003C4AF8 /* Balloon.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5301F1501346E78C003C4AF8 /* Balloon.xcdatamodel */,
+			);
+			currentVersion = 5301F1501346E78C003C4AF8 /* Balloon.xcdatamodel */;
+			path = Balloon.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5301F12B1346E78C003C4AF8 /* Project object */;
+}
