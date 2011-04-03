@@ -6,17 +6,56 @@
 #  Copyright 2011 AGiLE ANiMAL INC. All rights reserved.
 #
 
+framework 'Foundation'
+require 'rubygems'
+require 'cloudfiles'
+require 'yaml'
+
 class AppDelegate
     attr_accessor :window
+    attr_accessor :imageView
+    attr_accessor :uploadURLLabel
+    
+    attr_accessor :config
+    
     def applicationDidFinishLaunching(a_notification)
-        # Insert code here to initialize your application
+        self.config = YAML.load_file(NSBundle.mainBundle.resourcePath.fileSystemRepresentation+'/config.yml')['cloudfiles']
+        window.registerForDraggedTypes(NSArray.arrayWithObjects(NSFilenamesPboardType, nil))
+        imageView.registerForDraggedTypes(NSArray.arrayWithObjects(NSFilenamesPboardType, nil))
+        NSLog("#{self.config.description}")
     end
 
     # Persistence accessors
     attr_reader :persistentStoreCoordinator
     attr_reader :managedObjectModel
     attr_reader :managedObjectContext
+    
+    def draggingEntered(sender)
+        NSDragOperationEvery
+    end
 
+    def prepareForDragOperation(sender)
+        pboard = sender.draggingPasteboard
+        files = pboard.propertyListForType(NSFilenamesPboardType)
+        number_of_files = files.count;
+        NSLog("#{files[0]}")
+        workspace = NSWorkspace.sharedWorkspace
+        icon_image = workspace.iconForFile(files[0])
+        imageView.image = icon_image
+        uploadImageToCloud(files[0])
+        true
+    end
+    
+    def uploadImageToCloud(path)
+        cloud = CloudFiles::Connection.new(:username => config['username'], :api_key => config['api_key'])
+        container = cloud.container(config['container'])
+        object = container.create_object NSFileManager.defaultManager.displayNameAtPath(path), false
+        object.write File.open(path)
+        url = container.cdn_url + '/' + object.name
+        uploadURLLabel.setStringValue(url)
+        
+    end
+        
     #
     # Returns the directory the application uses to store the Core Data store file. This code uses a directory named "Balloon" in the user's Library directory.
     #

@@ -1,0 +1,4 @@
+cloudfiles:
+    container: your_container_name
+    username: your_username
+    api_key: YOUR_API_KEY_1234567890ABCDEF
