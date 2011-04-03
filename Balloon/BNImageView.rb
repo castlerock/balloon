@@ -8,20 +8,20 @@
 
 
 class BNImageView < NSImageView
-    
-    def draggingEntered(sender)
-        NSDragOperationEvery
-    end
-    
-    def prepareForDragOperation(sender)
-        pboard = sender.draggingPasteboard
-        files = pboard.propertyListForType(NSFilenamesPboardType)
-        number_of_files = files.count;
-        NSLog("#{files[0]}")
-        workspace = NSWorkspace.sharedWorkspace
-        icon_image = workspace.iconForFile(files[0])
-        self.image = icon_image
-        true
-    end
+  
+  def draggingEntered(sender)
+    NSDragOperationEvery
+  end
+  
+  def prepareForDragOperation(sender)
+    pboard = sender.draggingPasteboard
+    files = pboard.propertyListForType(NSFilenamesPboardType)
+    number_of_files = files.count;
+    NSLog("#{files[0]}")
+    workspace = NSWorkspace.sharedWorkspace
+    icon_image = workspace.iconForFile(files[0])
+    self.image = icon_image
+    true
+  end
 
 end

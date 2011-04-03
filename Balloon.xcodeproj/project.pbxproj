@@ -17,6 +17,9 @@
 		5301F1511346E78C003C4AF8 /* Balloon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5301F14F1346E78C003C4AF8 /* Balloon.xcdatamodeld */; };
 		5301F17B1348443A003C4AF8 /* BNImageView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5301F17A1348443A003C4AF8 /* BNImageView.rb */; };
 		5301F17D1348533A003C4AF8 /* config.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5301F17C1348533A003C4AF8 /* config.yml */; };
+		53B4F63913485B0F007B827F /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53B4F63813485B0F007B827F /* Growl.framework */; };
+		53B4F63B13485BA6007B827F /* Growl.framework in Resources */ = {isa = PBXBuildFile; fileRef = 53B4F63813485B0F007B827F /* Growl.framework */; };
+		53B4F63D13485C1D007B827F /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 53B4F63C13485C1D007B827F /* Growl Registration Ticket.growlRegDict */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,15 +28,17 @@
 		5301F13A1346E78C003C4AF8 /* MacRuby.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MacRuby.framework; path = System/Library/Frameworks/MacRuby.framework; sourceTree = SDKROOT; };
 		5301F13F1346E78C003C4AF8 /* Balloon-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Balloon-Info.plist"; sourceTree = "<group>"; };
 		5301F1411346E78C003C4AF8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5301F1431346E78C003C4AF8 /* Balloon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Balloon-Prefix.pch"; sourceTree = "<group>"; };
-		5301F1441346E78C003C4AF8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5301F1431346E78C003C4AF8 /* Balloon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "Balloon-Prefix.pch"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		5301F1441346E78C003C4AF8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		5301F1481346E78C003C4AF8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		5301F14B1346E78C003C4AF8 /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = rb_main.rb; sourceTree = "<group>"; };
-		5301F14D1346E78C003C4AF8 /* AppDelegate.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = AppDelegate.rb; sourceTree = "<group>"; };
+		5301F14B1346E78C003C4AF8 /* rb_main.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; lineEnding = 0; path = rb_main.rb; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5301F14D1346E78C003C4AF8 /* AppDelegate.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; lineEnding = 0; path = AppDelegate.rb; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5301F1501346E78C003C4AF8 /* Balloon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Balloon.xcdatamodel; sourceTree = "<group>"; };
-		5301F17A1348443A003C4AF8 /* BNImageView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = BNImageView.rb; sourceTree = "<group>"; };
-		5301F17C1348533A003C4AF8 /* config.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.yml; sourceTree = "<group>"; };
-		5301F17E13485697003C4AF8 /* config.yml.example */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.yml.example; sourceTree = "<group>"; };
+		5301F17A1348443A003C4AF8 /* BNImageView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; lineEnding = 0; path = BNImageView.rb; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5301F17C1348533A003C4AF8 /* config.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = config.yml; sourceTree = "<group>"; };
+		5301F17E13485697003C4AF8 /* config.yml.example */ = {isa = PBXFileReference; lastKnownFileType = text; lineEnding = 0; path = config.yml.example; sourceTree = "<group>"; };
+		53B4F63813485B0F007B827F /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = /Library/Frameworks/Growl.framework; sourceTree = "<absolute>"; };
+		53B4F63C13485C1D007B827F /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53B4F63913485B0F007B827F /* Growl.framework in Frameworks */,
 				5301F1391346E78C003C4AF8 /* Cocoa.framework in Frameworks */,
 				5301F13B1346E78C003C4AF8 /* MacRuby.framework in Frameworks */,
 			);
@@ -69,6 +75,7 @@
 		5301F1371346E78C003C4AF8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				53B4F63813485B0F007B827F /* Growl.framework */,
 				5301F1381346E78C003C4AF8 /* Cocoa.framework */,
 				5301F13A1346E78C003C4AF8 /* MacRuby.framework */,
 			);
@@ -97,6 +104,7 @@
 				5301F1431346E78C003C4AF8 /* Balloon-Prefix.pch */,
 				5301F1441346E78C003C4AF8 /* main.m */,
 				5301F17C1348533A003C4AF8 /* config.yml */,
+				53B4F63C13485C1D007B827F /* Growl Registration Ticket.growlRegDict */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -184,12 +192,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53B4F63B13485BA6007B827F /* Growl.framework in Resources */,
 				5301F1421346E78C003C4AF8 /* InfoPlist.strings in Resources */,
 				5301F1491346E78C003C4AF8 /* MainMenu.xib in Resources */,
 				5301F14C1346E78C003C4AF8 /* rb_main.rb in Resources */,
 				5301F14E1346E78C003C4AF8 /* AppDelegate.rb in Resources */,
 				5301F17B1348443A003C4AF8 /* BNImageView.rb in Resources */,
 				5301F17D1348533A003C4AF8 /* config.yml in Resources */,
+				53B4F63D13485C1D007B827F /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +332,7 @@
 				5301F1561346E78C003C4AF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5301F1571346E78C003C4AF8 /* Build configuration list for PBXLegacyTarget "Deployment" */ = {
 			isa = XCConfigurationList;
@@ -330,6 +341,7 @@
 				5301F1591346E78C003C4AF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
