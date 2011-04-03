@@ -9,19 +9,18 @@
 
 class BNImageView < NSImageView
   
+  attr_accessor :dragDelegate
+  
   def draggingEntered(sender)
-    NSDragOperationEvery
+    dragDelegate.draggingEntered(sender)
   end
   
   def prepareForDragOperation(sender)
-    pboard = sender.draggingPasteboard
-    files = pboard.propertyListForType(NSFilenamesPboardType)
-    number_of_files = files.count;
-    NSLog("#{files[0]}")
-    workspace = NSWorkspace.sharedWorkspace
-    icon_image = workspace.iconForFile(files[0])
-    self.image = icon_image
-    true
+    dragDelegate.prepareForDragOperation(sender)
+  end
+  
+  def draggingExited(sender)
+    dragDelegate.draggingExited(sender)
   end
 
 end

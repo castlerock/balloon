@@ -15,14 +15,19 @@ require 'yaml'
 class AppDelegate
   attr_accessor :window
   attr_accessor :imageView
-  attr_accessor :uploadURLLabel
+  attr_accessor :uploadURLButton
+  attr_accessor :imageURL
   
   attr_accessor :cloudfilesConfig
   
   def applicationDidFinishLaunching(a_notification)
+    self.imageURL = nil
     self.cloudfilesConfig = YAML.load_file(NSBundle.mainBundle.resourcePath.fileSystemRepresentation+'/config.yml')['cloudfiles']
     window.registerForDraggedTypes(NSArray.arrayWithObjects(NSFilenamesPboardType, nil))
     imageView.registerForDraggedTypes(NSArray.arrayWithObjects(NSFilenamesPboardType, nil))
+    imageView.dragDelegate = self;
+    imageView.image = NSImage.imageNamed('ready.png')
+
     GrowlApplicationBridge.setGrowlDelegate(self)
   end
 
@@ -32,10 +37,17 @@ class AppDelegate
   attr_reader :managedObjectContext
   
   def draggingEntered(sender)
+    imageView.image = NSImage.imageNamed('upload.png')
+    NSDragOperationEvery
+  end
+  
+  def draggingExited(sender)
+    imageView.image = NSImage.imageNamed('ready.png')
     NSDragOperationEvery
   end
 
   def prepareForDragOperation(sender)
+    imageView.image = NSImage.imageNamed('uploading.png')
     pboard = sender.draggingPasteboard
     files = pboard.propertyListForType(NSFilenamesPboardType)
     number_of_files = files.count;
@@ -52,11 +64,19 @@ class AppDelegate
     container = cloud.container(cloudfilesConfig['container'])
     object = container.create_object NSFileManager.defaultManager.displayNameAtPath(path), false
     object.write File.open(path)
-    url = container.cdn_url + '/' + object.name
-    uploadURLLabel.setStringValue(url)
+    self.imageURL = container.cdn_url + '/' + object.name
+    uploadURLButton.title = imageURL
     
-    GrowlApplicationBridge.notifyWithTitle("File Uploaded", description: url, notificationName: "File Upload", iconData: icon.TIFFRepresentation, priority: 0, isSticky: false, clickContext: nil)
+    GrowlApplicationBridge.notifyWithTitle("File Uploaded", description: imageURL, notificationName: "File Upload", iconData: icon.TIFFRepresentation, priority: 0, isSticky: false, clickContext: nil)
     
+  end
+  
+  def openURL(sender)
+    NSLog(imageURL)
+    if !self.imageURL.nil?
+      url = NSURL.URLWithString(imageURL)
+      NSWorkspace.sharedWorkspace.openURL(url)
+    end
   end
     
   #
