@@ -3,24 +3,40 @@
 #  Balloon
 #
 #  Created by Mark Madsen on 4/1/11.
-#  Copyright 2011 AGiLE ANiMAL INC. All rights reserved.
 #
 
 framework 'Foundation'
 framework 'Growl'
 require 'rubygems'
+require 'json'
 require 'cloudfiles'
+require 'googl'
 require 'yaml'
+require 'UploadOperation'
 
 class AppDelegate
+  
+  # Persistence accessors
+  attr_reader :persistentStoreCoordinator
+  attr_reader :managedObjectModel
+  attr_reader :managedObjectContext
+  
+  # Accessors for NIB
   attr_accessor :window
   attr_accessor :imageView
   attr_accessor :uploadURLButton
   attr_accessor :imageURL
-  
+  attr_accessor :queue
   attr_accessor :cloudfilesConfig
   
+  #
+  # Read in config and set defaults.
+  # Like I am going to show you my API key...
+  # Register for Drag and Drop
+  #
+  
   def applicationDidFinishLaunching(a_notification)
+    queue = NSOperationQueue.alloc.init
     self.imageURL = nil
     self.cloudfilesConfig = YAML.load_file(NSBundle.mainBundle.resourcePath.fileSystemRepresentation+'/config.yml')['cloudfiles']
     window.registerForDraggedTypes(NSArray.arrayWithObjects(NSFilenamesPboardType, nil))
@@ -30,11 +46,10 @@ class AppDelegate
 
     GrowlApplicationBridge.setGrowlDelegate(self)
   end
-
-  # Persistence accessors
-  attr_reader :persistentStoreCoordinator
-  attr_reader :managedObjectModel
-  attr_reader :managedObjectContext
+  
+  #
+  # Handle the drag and drop
+  #
   
   def draggingEntered(sender)
     imageView.image = NSImage.imageNamed('upload.png')
@@ -51,13 +66,23 @@ class AppDelegate
     pboard = sender.draggingPasteboard
     files = pboard.propertyListForType(NSFilenamesPboardType)
     number_of_files = files.count;
-    NSLog("#{files[0]}")
-    workspace = NSWorkspace.sharedWorkspace
-    icon_image = workspace.iconForFile(files[0])
-    imageView.image = icon_image
-    uploadImageToCloud(files[0], icon_image)
-    true
+    files.each do |file|
+      workspace = NSWorkspace.sharedWorkspace
+      iconImage = workspace.iconForFile(file)
+      
+      ##uploadImageToCloud(files[0], iconImage)
+      queue = NSOperationQueue.alloc.init
+      uploader = UploadOperation.alloc.initWithFile(file, iconImage)
+      uploader.setURLUpdatedDelegate(self)
+      queue.addOperation uploader
+    end
   end
+  
+  
+  
+  #
+  # Uploads the image (or other file) to the cloud
+  #
   
   def uploadImageToCloud(path, icon)
     cloud = CloudFiles::Connection.new(:username => cloudfilesConfig['username'], :api_key => cloudfilesConfig['api_key'])
@@ -65,11 +90,26 @@ class AppDelegate
     object = container.create_object NSFileManager.defaultManager.displayNameAtPath(path), false
     object.write File.open(path)
     self.imageURL = container.cdn_url + '/' + object.name
-    uploadURLButton.title = imageURL
+
+    short_url = Googl.shorten(imageURL).short_url
     
-    GrowlApplicationBridge.notifyWithTitle("File Uploaded", description: imageURL, notificationName: "File Upload", iconData: icon.TIFFRepresentation, priority: 0, isSticky: false, clickContext: nil)
+    uploadURLButton.title = short_url
     
+    GrowlApplicationBridge.notifyWithTitle("File Uploaded", description: short_url, notificationName: "File Upload", iconData: icon.TIFFRepresentation, priority: 0, isSticky: false, clickContext: nil)
   end
+  
+  def urlChanged(paths)
+    short_url = paths[:shortURL]
+    file_url = paths[:fileURL]
+    
+    @imageURL = short_url
+    @uploadURLButton.title = short_url
+    @imageView.image = NSImage.alloc.initWithContentsOfFile(file_url)
+  end
+  
+  #
+  # Opens the URL in a web browser
+  #
   
   def openURL(sender)
     NSLog(imageURL)
@@ -78,6 +118,9 @@ class AppDelegate
       NSWorkspace.sharedWorkspace.openURL(url)
     end
   end
+  
+  
+  
     
   #
   # Returns the directory the application uses to store the Core Data store file. This code uses a directory named "Balloon" in the user's Library directory.
