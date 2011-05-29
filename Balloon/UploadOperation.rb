@@ -3,7 +3,7 @@
 #  Balloon
 #
 #  Created by Mark Madsen on 5/28/11.
-#  Copyright 2011 AGiLE ANiMAL INC. All rights reserved.
+#  Copyright 2011 CRRI. All rights reserved.
 #
 
 framework 'Foundation'
@@ -18,7 +18,6 @@ class UploadOperation < NSOperation
   attr_accessor :iconImage
   attr_accessor :imageURL
   attr_accessor :shortURL
-  
   attr_accessor :cloudfilesConfig
   
   attr_accessor :urlUpdatedDelegate
@@ -37,18 +36,23 @@ class UploadOperation < NSOperation
   
   
   def main
-    cloud = CloudFiles::Connection.new(:username => cloudfilesConfig['username'], :api_key => cloudfilesConfig['api_key'])
-    container = cloud.container(cloudfilesConfig['container'])
-    object = container.create_object NSFileManager.defaultManager.displayNameAtPath(@fileURL), false
-    object.write File.open(@fileURL)
-    @imageURL = container.cdn_url + '/' + object.name
-    @shortURL = Googl.shorten(imageURL).short_url
-    
-    @urlUpdatedDelegate.performSelectorOnMainThread("urlChanged:", withObject:{fileURL:@fileURL, shortURL:@shortURL}, waitUntilDone:false)
-        
-    GrowlApplicationBridge.notifyWithTitle("File Uploaded", description: shortURL, notificationName: "File Upload", iconData: @iconImage.TIFFRepresentation, priority: 0, isSticky: false, clickContext: nil)
+    begin
+      cloud = CloudFiles::Connection.new(:username => cloudfilesConfig['username'], :api_key => cloudfilesConfig['api_key'])
+      container = cloud.container(cloudfilesConfig['container'])
+      object = container.create_object(NSFileManager.defaultManager.displayNameAtPath(@fileURL), false)
+      
+      object.write File.open(@fileURL)
+      
+      @imageURL = container.cdn_url + '/' + object.name
+      @shortURL = Googl.shorten(imageURL).short_url
+      
+      @urlUpdatedDelegate.performSelectorOnMainThread("urlChanged:", withObject:{fileURL:@fileURL, shortURL:@shortURL}, waitUntilDone:false)
+          
+      GrowlApplicationBridge.notifyWithTitle("File Uploaded", description: shortURL, notificationName: "File Upload", iconData: @iconImage.TIFFRepresentation, priority: 0, isSticky: false, clickContext: nil)
+    rescue Exception => ex
+      GrowlApplicationBridge.notifyWithTitle("Upload Failed", description: ex.message, notificationName: "File Upload", iconData: @iconImage.TIFFRepresentation, priority: 0, isSticky: false, clickContext: nil)
+    end
     
   end
   
-
 end

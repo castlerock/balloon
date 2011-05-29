@@ -3,6 +3,7 @@
 #  Balloon
 #
 #  Created by Mark Madsen on 4/1/11.
+#  Copyright 2011 CRRI. All rights reserved.
 #
 
 framework 'Foundation'
@@ -12,6 +13,7 @@ require 'json'
 require 'cloudfiles'
 require 'googl'
 require 'yaml'
+
 require 'UploadOperation'
 
 class AppDelegate
@@ -26,9 +28,9 @@ class AppDelegate
   attr_accessor :imageView
   attr_accessor :uploadURLButton
   attr_accessor :imageURL
-  attr_accessor :queue
   attr_accessor :cloudfilesConfig
   
+  attr_accessor :queue
   #
   # Read in config and set defaults.
   # Like I am going to show you my API key...
@@ -36,11 +38,12 @@ class AppDelegate
   #
   
   def applicationDidFinishLaunching(a_notification)
-    queue = NSOperationQueue.alloc.init
-    self.imageURL = nil
-    self.cloudfilesConfig = YAML.load_file(NSBundle.mainBundle.resourcePath.fileSystemRepresentation+'/config.yml')['cloudfiles']
-    window.registerForDraggedTypes(NSArray.arrayWithObjects(NSFilenamesPboardType, nil))
-    imageView.registerForDraggedTypes(NSArray.arrayWithObjects(NSFilenamesPboardType, nil))
+    @queue = NSOperationQueue.alloc.init
+    @imageURL = nil
+    
+    #window.registerForDraggedTypes(NSArray.arrayWithObjects(NSFilenamesPboardType, nil))
+    
+    imageView.registerForDraggedTypes([NSFilenamesPboardType, nil])
     imageView.dragDelegate = self;
     imageView.image = NSImage.imageNamed('ready.png')
 
@@ -65,16 +68,16 @@ class AppDelegate
     imageView.image = NSImage.imageNamed('uploading.png')
     pboard = sender.draggingPasteboard
     files = pboard.propertyListForType(NSFilenamesPboardType)
-    number_of_files = files.count;
     files.each do |file|
       workspace = NSWorkspace.sharedWorkspace
       iconImage = workspace.iconForFile(file)
       
+      # THIS WAY WILL BLOCK ON THE MAIN UI THREAD
       ##uploadImageToCloud(files[0], iconImage)
-      queue = NSOperationQueue.alloc.init
+      # THIS WAY WILL NOT
       uploader = UploadOperation.alloc.initWithFile(file, iconImage)
       uploader.setURLUpdatedDelegate(self)
-      queue.addOperation uploader
+      @queue.addOperation uploader
     end
   end
   
@@ -85,6 +88,7 @@ class AppDelegate
   #
   
   def uploadImageToCloud(path, icon)
+    cloudfilesConfig = YAML.load_file(NSBundle.mainBundle.resourcePath.fileSystemRepresentation+'/config.yml')['cloudfiles']
     cloud = CloudFiles::Connection.new(:username => cloudfilesConfig['username'], :api_key => cloudfilesConfig['api_key'])
     container = cloud.container(cloudfilesConfig['container'])
     object = container.create_object NSFileManager.defaultManager.displayNameAtPath(path), false
@@ -97,6 +101,10 @@ class AppDelegate
     
     GrowlApplicationBridge.notifyWithTitle("File Uploaded", description: short_url, notificationName: "File Upload", iconData: icon.TIFFRepresentation, priority: 0, isSticky: false, clickContext: nil)
   end
+  
+  #
+  # Once upload completes, update the UI
+  #
   
   def urlChanged(paths)
     short_url = paths[:shortURL]

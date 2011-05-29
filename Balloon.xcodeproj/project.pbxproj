@@ -17,7 +17,6 @@
 		5301F1511346E78C003C4AF8 /* Balloon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5301F14F1346E78C003C4AF8 /* Balloon.xcdatamodeld */; };
 		5301F17B1348443A003C4AF8 /* BNImageView.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5301F17A1348443A003C4AF8 /* BNImageView.rb */; };
 		5301F17D1348533A003C4AF8 /* config.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5301F17C1348533A003C4AF8 /* config.yml */; };
-		53261D021384BD8700EC5A5B /* ruby.icns in Resources */ = {isa = PBXBuildFile; fileRef = 53261D011384BD8700EC5A5B /* ruby.icns */; };
 		53B4F63913485B0F007B827F /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53B4F63813485B0F007B827F /* Growl.framework */; };
 		53B4F63B13485BA6007B827F /* Growl.framework in Resources */ = {isa = PBXBuildFile; fileRef = 53B4F63813485B0F007B827F /* Growl.framework */; };
 		53B4F63D13485C1D007B827F /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 53B4F63C13485C1D007B827F /* Growl Registration Ticket.growlRegDict */; };
@@ -43,7 +42,6 @@
 		5301F17A1348443A003C4AF8 /* BNImageView.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; lineEnding = 0; path = BNImageView.rb; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		5301F17C1348533A003C4AF8 /* config.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = config.yml; sourceTree = "<group>"; };
 		5301F17E13485697003C4AF8 /* config.yml.example */ = {isa = PBXFileReference; lastKnownFileType = text; lineEnding = 0; path = config.yml.example; sourceTree = "<group>"; };
-		53261D011384BD8700EC5A5B /* ruby.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ruby.icns; sourceTree = "<group>"; };
 		53B4F63813485B0F007B827F /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = /Library/Frameworks/Growl.framework; sourceTree = "<absolute>"; };
 		53B4F63C13485C1D007B827F /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		53B4F640134862BB007B827F /* ready.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ready.png; sourceTree = "<group>"; };
@@ -70,7 +68,6 @@
 		5301F1291346E78C003C4AF8 = {
 			isa = PBXGroup;
 			children = (
-				53261D011384BD8700EC5A5B /* ruby.icns */,
 				53EA8C561390A77500952A57 /* balloon.icns */,
 				5301F13D1346E78C003C4AF8 /* Balloon */,
 				5301F1371346E78C003C4AF8 /* Frameworks */,
@@ -221,7 +218,6 @@
 				53B4F642134862BB007B827F /* ready.png in Resources */,
 				53B4F643134862BB007B827F /* uploading.png in Resources */,
 				53B4F64513486328007B827F /* upload.png in Resources */,
-				53261D021384BD8700EC5A5B /* ruby.icns in Resources */,
 				53EA8C571390A77500952A57 /* balloon.icns in Resources */,
 				53EA8C5C1390A83500952A57 /* UploadOperation.rb in Resources */,
 			);
